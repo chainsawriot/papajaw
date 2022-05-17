@@ -14,7 +14,7 @@
 ```r
 # setup Latex
 
-install.packages(c("tinytex", "remotes", "trackdown"))
+install.packages(c("tinytex", "remotes", "trackdown", "here", "broom"))
 tinytex::install_tinytex()
 
 ## restart your environment, e.g. BASH
@@ -45,5 +45,45 @@ A good way to install missing LaTeX components.
 rmarkdown::render("article.Rmd")
 ```
 
+# here
+
+Announcing this is the base directory (Please don't `setwd`)
+
+```r
+here::i_am("article.Rmd")
+```
+
 # From here: FAQ
 
+**Q: I need Microsoft Word.**
+
+A: Change `output` to `papaja::apa6_word`
+
+**Q: This is for anonymous peer review**
+
+A: Change `mask` to `yes`
+
+**Q: I need to insert a table**
+
+A: Change your table to a data frame and use `apa_table`
+
+For example:
+
+```r
+media <- read.csv(here::here("data", "media.csv"))
+
+model <- lm(radio~gender+age+education, data = media)
+broom::tidy(model, conf.int = TRUE)
+
+papaja::apa_table(broom::tidy(model, conf.int = TRUE))
+```
+
+Or add this into your rmarkdown as a code chunk
+
+```markdown
+```{r, echo = FALSE}
+media <- read.csv(here::here("data", "media.csv"))
+model <- lm(radio~gender+age+education, data = media)
+papaja::apa_table(broom::tidy(model, conf.int = TRUE), caption = "Very important regression table", note = "You need to read this")
+```
+```
