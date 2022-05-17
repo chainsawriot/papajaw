@@ -86,4 +86,53 @@ media <- read.csv(here::here("data", "media.csv"))
 model <- lm(radio~gender+age+education, data = media)
 papaja::apa_table(broom::tidy(model, conf.int = TRUE), caption = "Very important regression table", note = "You need to read this")
 ```
+
+**Q: I need to insert a figure**
+
+A: You have the figure file.
+
+```r
+knitr::include_graphics(here::here("fig", "survivorship.png"))
 ```
+
+You want to generate the figure on the fly.
+
+```r
+require(ggplot2)
+ggplot(media, aes(x = radio, y = age)) + geom_point()
+```
+
+**Q: I want the figures and tables not at the back.**
+
+A: Change `floatsintext` to `yes`
+
+**Q: I want to cite something.**
+
+A: You need to have your own Bibtex file (You can manage your bib file using Zotero, but that's beyond the scope of this short tutorial.)
+
+1. Create a empty text file, e.g. "bib.bib"
+
+2. Add entries
+
+* Paste from downloaded bibtex files
+* Generate from Crossref
+* Google Scholar
+
+3. Add to yaml `bibliography`
+
+```markdown
+@Van_der_Pas_2020 has said something great. This article [@Nanz_2022] says what I want to say. These articles [@Van_der_Pas_2020; @Nanz_2022] are nice.
+```
+
+**Q: I want to create a reproducible workflow.**
+
+A: My suggestion is actually using [make](https://monashbioinformaticsplatform.github.io/2017-11-16-open-science-training/topics/automation.html).
+
+**Q: I want to ...**
+
+A: You probably can find out how to do that either in
+
+* [The official papaja manual](http://frederikaust.com/papaja_man/)
+* [The RMarkdown book](https://bookdown.org/yihui/rmarkdown/)
+
+Or zillion of RMarkdown tutorials (e.g. this [one](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3175518) by my colleague Paul Bauer) out there. 
