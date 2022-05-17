@@ -1,8 +1,8 @@
 # Motto
 
 1. Reproduciblity: Thou shalt not copy and paste.
-2. Single source of truth (FINAL.doc; FINAL\_rev2.doc; FINAL\_rev2\_commented.doc; FINAL\_correct\_reallyfinal.doc)
-3. If this your first night, you have to type.
+2. Single source of truth in a Git repository (not FINAL.doc; FINAL\_rev2.doc; FINAL\_rev2\_commented.doc; FINAL\_correct\_reallyfinal.doc)
+3. If this is your first night, you have to type.
 
 # Setup
 
