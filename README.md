@@ -106,6 +106,24 @@ ggplot(media, aes(x = radio, y = age)) + geom_point()
 
 A: Change `floatsintext` to `yes`
 
+**Q: I want to insert equations.**
+
+A: Use LaTeX.
+
+```latex
+\begin{align}
+  e &= mc^2
+\end{align}
+```
+
+**Q: I want to insert source code.**
+
+A: Use non-executing code block.
+
+**Q: I want to do calculation in the text.**
+
+A: Use backtick r.
+
 **Q: I want to cite something.**
 
 A: You need to have your own Bibtex file (You can manage your bib file using Zotero, but that's beyond the scope of this short tutorial.)
